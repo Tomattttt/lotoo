@@ -1,5 +1,17 @@
-# Object file
-*.o
+import random
+import logging
 
-# Ada Library Information
-*.ali
+logging.basicConfig(filename='log.log', level=logging.INFO)
+
+def generate(n):
+    sequence = list(range(1, n + 1))
+    random.shuffle(sequence)
+    logging.info('Сгенерирована последовательность: %s', sequence)
+    return sequence
+
+def Number(sequence, pulled):
+    number = sequence.pop(0)
+    pulled.append(number)
+    logging.info('Вытащено число: %d', number)
+    logging.info('Последовательность выпавших чисел: %s', pulled)
+    return number
