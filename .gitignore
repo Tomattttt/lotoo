@@ -15,3 +15,29 @@ def Number(sequence, pulled):
     logging.info('Вытащено число: %d', number)
     logging.info('Последовательность выпавших чисел: %s', pulled)
     return number
+def main():
+    try:
+        n = int(input('Введите количество вытаскиваемых бочек: '))
+        if n < 1:
+            print('Некорректное число. Введите натуральное число')
+            return
+        sequence = generate(n)
+        pulled = []
+
+        while True:
+            inp = input('Нажмите Enter для вытаскивания бочонка: ')
+
+            if inp == '':
+                if not sequence:
+                    print('Все числа вытащены.')
+                    break
+
+                number = Number(sequence, pulled)
+
+                print('Выпало число:', number)
+            elif inp == ('q' or "Q"):
+                break
+    except ValueError:
+        print('Некорректный ввод. Введите число.')
+if __name__ == '__main__':
+    main()
